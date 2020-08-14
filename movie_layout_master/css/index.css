@@ -1,0 +1,328 @@
+/* GLOBAL */
+html,
+body {
+    font-family: "Montserrat", sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+/* HEADER */
+
+header {
+    position: absolute;
+    /* top: 10px; */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    font-weight: 400;
+    letter-spacing: 2px;
+    /* line-height: .8em; */
+    /* position: fixed; */
+}
+
+.container p {
+    padding-top: 30px;
+}
+
+#movieNavbar .navbar-nav {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+#movieNavbar a {
+    padding: 6px 30px;
+    font-weight: 300 bold;
+}
+
+#movieNavbar .nav-item::after {
+    content: "";
+    width: 0;
+    height: 3px;
+    display: block;
+    /* dùng backgroup hoặc background img, vì đường nayf có 2 màu trở lên */
+    /* hàm line-gradient chỉ có tác dụng với background hoặc background-image:  */
+    /*  */
+    /* value đầu tiên là hướng trải màu
+    to right: là trải từ trái qua phải 
+    value tiếp theo là màu bắt đầu
+    cuối cùng là màu kết thúc
+    */
+
+    background: linear-gradient(to right, #fbbd61, #ec7532);
+    transition: all 0.5s;
+}
+
+#movieNavbar .nav-item:hover::after {
+    width: 100%;
+}
+
+#movieNavbar .nav-item.active::after {
+    /* viết sát lại là đang định nghĩa cùng 1 thẻ, viết cách ra là quan hệ cha con */
+    width: 100%;
+}
+
+/* CAROUSEL */
+
+#movieCarousel .carousel-caption {
+    text-align: left;
+    /* kỹ thuật bên dưới là kỹ thuật dùng để canh giữa nội dung cho thẻ có postion absolute
+    trước tiên là khai báo container cho thẻ đó để có width là 1100px
+    sau đó là khai báo top left 50%, và transform trừ 50%
+    50% top left là của thằng cha
+    50% của transform là lấy của thằng con
+    dấu âm ở đây là kéo ngược kích thước của nó theo trục tọa độ
+    */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* translate 2 chiều -50% */
+}
+/* muốn đè code thì phải ghi bộ selector lớn hơn hoặc bằng với bộ của bootstrap */
+#movieCarousel .carousel-indicators li {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    /* transparent là màu trong suốt */
+    background-color: transparent;
+    border: 2px solid white;
+    opacity: 1;
+    /* background-clip: định nghĩa của vùng phủ background 
+    nội dung và padđing phủ, nhưng border ko phủ, muốn fix thì phải thêm borderbox
+    để nó phủ đến vùng border
+    */
+    background-clip: border-box;
+}
+
+#movieCarousel .carousel-indicators li.active {
+    background-color: white;
+}
+
+#movieCarousel .carousel-indicators {
+    /* nos ddang bij jusstifi-content center
+    nên đè fnos bằng flex-star */
+    /* top: 50%; */
+    justify-content: flex-start;
+    left: 50%;
+    bottom: 50px;
+    transform: translateX(-50%);
+    margin-left: 0;
+    margin-top: 0;
+    padding-left: 15px;
+}
+
+#movieCarousel .carousel-item span {
+    border: 1px solid white;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 50%;
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+#movieCarousel .carousel-item .action__adventure {
+    color: #ec7532;
+}
+#movieCarousel button {
+    border: none;
+    background: linear-gradient(to right, #fbbd61, #ec7532);
+    border-radius: 20px;
+    padding: 12px 35px;
+    color: white;
+    letter-spacing: 3px;
+    font-size: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+#movieCarousel .carousel__button .carousel__overlay {
+    background-color: #ec7532;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    opacity: 0.7;
+    transform: skew(30deg) translateX(-120%);
+    transition: all 0.5s;
+}
+
+#movieCarousel .carousel__button button:hover .carousel__overlay {
+    transform: skew(30deg) translateX(-10%);
+}
+
+/* New in */
+.newIn__img {
+    position: relative;
+    overflow: hidden;
+}
+
+.newIn__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(to bottom, #fbbd61, #ec7532);
+    opacity: 0.9;
+    /* bẻ nó 1 góc 30 độ thành hình bình hành */
+    transform: skewX(30deg) translateX(-130%);
+    transition: all 0.5s;
+}
+.newIn__img:hover .newIn__overlay {
+    transform: skewX(30deg) translateX(-20%);
+}
+
+.newIn .newIn__content .newIn__play .play i {
+    position: absolute;
+    top: 30%;
+    left: 33%;
+    width: 80px;
+    height: 80px;
+    border: 2px solid white;
+    line-height: 80px;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+}
+.newIn .newIn__content .newIn__play .readmore {
+    position: absolute;
+    top: 62%;
+    left: 32%;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 3px;
+}
+.newIn .newIn__content .newIn__play span {
+    position: absolute;
+    top: 70%;
+    left: 24%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+.newIn .newIn__content .newIn__play {
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.newIn__img:hover .newIn__play {
+    opacity: 1;
+}
+
+.newIn .newIn__content .newIn__rate {
+    color: #fbbd61;
+}
+.newIn .newIn__content .newIn__rate .newIn__unrate {
+    color: #d8d8d8;
+}
+
+/* SHow time */
+.showTime .nav-tabs a{
+    border: none;
+    padding: 10px 30px;
+    color: #4a4a4a;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.showTime .nav-item::after {
+    content: "";
+    width: 0%;
+    height: 3px;
+    display: block;
+    background: linear-gradient(to right, #fbbd61, #ec7532);
+    transition: all 0.5s;
+}
+
+.showTime .nav-item:hover::after{
+    width: 100%;
+}
+
+.showTime .nav-item a.active{
+    color: #ec7532;
+}
+.showTime .nav-item.active::after{
+    width: 100%;
+}
+
+.showTime .show__text .type__film{
+    color: #ec7532;
+    font-size: 15px;
+    font-weight: bold;
+}
+.showTime .show__text .synposis{
+    font-weight: 500;
+    letter-spacing: 3px;
+    transition: all .5s;
+    
+}
+.showTime .show__text .synposis:hover{
+    text-decoration: none;
+    color: black;
+}
+
+/* Coming soon */
+.comingSoon {
+    background-color: black;
+    position: relative;
+    color: white;
+}
+
+.comingSoon__bg {
+    background-image: url(../images/slide-3.png);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.coming__content h2::after {
+    content: "";
+    width: 20%;
+    height: 3px;
+    display: block;
+    background: linear-gradient(to right, #fbbd61, #ec7532);
+    margin-top: 20px;
+}
+
+.coming__content h2 {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.coming__trailer{
+    position: relative;
+}
+.coming__content{
+    padding: 0;
+}
+.coming__content .coming__video .coming__trailer i{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    border: 2px solid #ec7532;
+    color: white;
+    border-radius: 50%;
+    font-size: 30px;
+    line-height: 80px;
+    text-align: center;
+    margin: auto;
+}
+
+.movieList{
+    background-color:#101010;
+}
+.movieList__carousel{
+    background-color:#101010;
+}
+.movieList__carousel__content{
+    color: white;
+    text-align: center;
+    /* margin: 0 auto; */
+}
+.movieList__carousel .movieList__carousel__content .movieList__img{
+    position: relative;
+    overflow: hidden;
+    padding: 30px 0;
+}
